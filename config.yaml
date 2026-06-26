@@ -1,0 +1,74 @@
+# Configuration du projet Fintech Méditerranée 2026
+projet:
+  nom: "Fintech Méditerranée 2026"
+  version: "1.0.0"
+  auteur: "Votre Nom"
+  email: "votre.email@domaine.com"
+
+options:
+  option1:
+    actif: true
+    annees_debut: 2020
+    annees_fin: 2026
+    produits:
+      - "Céréales"
+      - "Phosphates"
+      - "Textiles"
+      - "Composants électroniques"
+      - "Oléagineux"
+    seed: 42
+    
+  option2:
+    actif: true
+    ports:
+      - nom: "Marseille"
+        lat: 43.3
+        lon: 5.4
+        offre: 0.4
+        demande: 0.25
+      - nom: "Bizerte"
+        lat: 37.3
+        lon: 9.9
+        offre: 0.2
+        demande: 0.35
+      - nom: "Istanbul"
+        lat: 41.0
+        lon: 29.0
+        offre: 0.25
+        demande: 0.2
+      - nom: "Odessa"
+        lat: 46.5
+        lon: 30.7
+        offre: 0.15
+        demande: 0.2
+    epsilon: 0.05
+    max_iter: 200
+    tol: 1.0e-6
+
+  option3:
+    actif: true
+    nom_waqf: "WaqfClusterMed"
+    naqib: "0x1234567890123456789012345678901234567890"
+    beneficiaires:
+      - adresse: "0x111..."
+        nom: "Fondation Permaculture"
+        part: 30
+      - adresse: "0x222..."
+        nom: "Coopérative Logistique"
+        part: 25
+      - adresse: "0x333..."
+        nom: "Fonds Souverain Tunisien"
+        part: 25
+      - adresse: "0x444..."
+        nom: "INRAT"
+        part: 20
+
+logs:
+  niveau: "INFO"
+  fichier: "logs/projet.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+sorties:
+  dossier: "results"
+  formats: ["png", "csv", "json", "md"]
+EOF
