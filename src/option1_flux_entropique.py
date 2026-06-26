@@ -14,6 +14,27 @@ from datetime import datetime
 import json
 import yaml
 
+# Ajouter en début de fichier, après les imports
+def charger_config():
+    """Charge la configuration depuis config.yaml"""
+    config = None
+    try:
+        if os.path.exists('config.yaml'):
+            with open('config.yaml', 'r', encoding='utf-8') as f:
+                full_config = yaml.safe_load(f)
+                config = full_config.get('option1', {})
+                logger.info("Configuration chargée depuis config.yaml")
+    except Exception as e:
+        logger.warning(f"Impossible de charger config.yaml : {str(e)}")
+    return config
+
+# Modifier le __init__ de FluxEntropiqueAnalyzer
+def __init__(self, config=None):
+    if config is None:
+        config = charger_config()
+    self.config = config or self._load_default_config()
+    # ... reste du code
+
 # Configuration du logging
 logging.basicConfig(
     level=logging.INFO,
