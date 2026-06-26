@@ -16,6 +16,48 @@ from dataclasses import dataclass
 from typing import List, Tuple, Optional
 import yaml
 
+# Ajouter en début de fichier, après les imports
+def charger_config():
+    """Charge la configuration depuis config.yaml"""
+    config = None
+    try:
+        if os.path.exists('config.yaml'):
+            with open('config.yaml', 'r', encoding='utf-8') as f:
+                full_config = yaml.safe_load(f)
+                config = full_config.get('option2', {})
+                logger.info("Configuration chargée depuis config.yaml")
+    except Exception as e:
+        logger.warning(f"Impossible de charger config.yaml : {str(e)}")
+    return config
+
+# Modifier le main()
+def main():
+    """Fonction principale"""
+    config = charger_config()
+    
+    # Si config existe, utiliser ses paramètres
+    if config and 'ports' in config:
+        ports = []
+        for p in config['ports']:
+            ports.append(Port(
+                p['nom'], p['lat'], p['lon'], 
+                p['offre'], p['demande']
+            ))
+    else:
+        # Définition des ports par défaut
+        ports = [
+            Port("Marseille", 43.3, 5.4, 0.4, 0.25),
+            Port("Bizerte", 37.3, 9.9, 0.2, 0.35),
+            Port("Istanbul", 41.0, 29.0, 0.25, 0.2),
+            Port("Odessa", 46.5, 30.7, 0.15, 0.2)
+        ]
+    
+    epsilon = config.get('epsilon', 0.05) if config else 0.05
+    max_iter = config.get('max_iter', 200) if config else 200
+    
+    model = VillaniLogistics(ports, epsilon=epsilon, max_iter=max_iter)
+    model.run_simulation()
+    
 # Configuration du logging
 logging.basicConfig(
     level=logging.INFO,
