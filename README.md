@@ -15,3 +15,36 @@ Ce projet implémente un **système financier alternatif** pour la coopération 
 3. **Waqf numérique** : Redistribution équitable via contrat intelligent
 
 ## 🧩 Architecture
+
+─────────────────────────────────────────────────────────────┐
+│ Système Fintech Med │
+├─────────────────────────────────────────────────────────────┤
+│ │
+│ ┌──────────────────┐ ┌──────────────────┐ ┌────────────┐│
+│ │ Flux Entropique │ │ Transport Opt. │ │Waqf Numérique││
+│ │ (Option 1) │ │ (Option 2) │ │(Option 3) ││
+│ │ - Φ(t)=M-X │ │ - Sinkhorn │ │- Solidity ││
+│ │ - Λ=D*r/Ė │ │ - Ricci │ │- DAO ││
+│ └──────────────────┘ └──────────────────┘ └────────────┘│
+│ │ │ │ │
+│ └─────────────────────┼────────────────────┘ │
+│ │ │
+│ ┌──────────┴──────────┐ │
+│ │ Boucle Sadaqa-BRI │ │
+│ │ Flot de Ricci │ │
+│ └─────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+
+## 🚀 Installation
+
+```bash
+# Cloner le dépôt
+git clone https://github.com/votre-username/fintech-med-2026.git
+cd fintech-med-2026
+
+# Créer un environnement virtuel (optionnel)
+python -m venv venv
+source venv/bin/activate  # Sur Windows : venv\Scripts\activate
+
+# Installer les dépendances
+pip install -r requirements.txt
